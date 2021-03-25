@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+  - dockerfile
+
+before_install:
+  - docker build -t retrofire/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run retrofire/docker-react -e CI=true npm run test
